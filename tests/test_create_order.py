@@ -120,3 +120,14 @@ def test_create_order_enqueues_sqs_message(aws_setup):
     sqs = boto3.client("sqs", region_name="us-east-1")
     messages = sqs.receive_message(QueueUrl=aws_setup["queue_url"], MaxNumberOfMessages=1)
     assert "Messages" in messages
+def test_unsupported_http_method_returns_405(aws_setup):
+    from create_order import handler as create_order_handler
+
+    event = _api_event(
+        {"customer_id": "cust-1", "items": [{"sku": "A1", "qty": 1}]},
+        method="DELETE",
+    )
+
+    response = create_order_handler.handler(event, DummyContext())
+
+    assert response["statusCode"] == 405

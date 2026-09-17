@@ -12,7 +12,7 @@ resource "aws_sqs_queue" "orders_queue" {
 
   redrive_policy = jsonencode({
     deadLetterTargetArn = aws_sqs_queue.orders_dlq.arn
-    maxReceiveCount      = var.sqs_max_receive_count
+    maxReceiveCount     = var.sqs_max_receive_count
   })
 }
 
@@ -27,9 +27,9 @@ resource "aws_sqs_queue_redrive_allow_policy" "orders_dlq_allow" {
 }
 
 resource "aws_lambda_event_source_mapping" "process_order_sqs" {
-  event_source_arn                  = aws_sqs_queue.orders_queue.arn
-  function_name                     = aws_lambda_function.process_order.arn
-  batch_size                        = 10
+  event_source_arn                   = aws_sqs_queue.orders_queue.arn
+  function_name                      = aws_lambda_function.process_order.arn
+  batch_size                         = 10
   maximum_batching_window_in_seconds = 5
-  function_response_types           = ["ReportBatchItemFailures"]
+  function_response_types            = ["ReportBatchItemFailures"]
 }

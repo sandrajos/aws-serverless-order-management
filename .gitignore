@@ -11,9 +11,10 @@ terraform/.terraform/
 terraform/.build/
 terraform/*.tfstate
 terraform/*.tfstate.backup
-terraform/.terraform.lock.hcl
-terraform/tfplan
-terraform/*.zip
+terraform/*.tfplan
+terraform/.terraform.tfstate.lock.info
+*.tfvars
+*.tfvars.json
 
 # OS / editor
 .DS_Store

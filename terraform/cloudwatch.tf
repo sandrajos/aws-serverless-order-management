@@ -83,7 +83,7 @@ resource "aws_cloudwatch_dashboard" "order_platform" {
         width  = 12
         height = 6
         properties = {
-          title   = "Lambda Errors"
+          title = "Lambda Errors"
           metrics = [
             ["AWS/Lambda", "Errors", "FunctionName", aws_lambda_function.create_order.function_name],
             ["AWS/Lambda", "Errors", "FunctionName", aws_lambda_function.process_order.function_name],
@@ -101,7 +101,7 @@ resource "aws_cloudwatch_dashboard" "order_platform" {
         width  = 12
         height = 6
         properties = {
-          title   = "DLQ Depth"
+          title = "DLQ Depth"
           metrics = [
             ["AWS/SQS", "ApproximateNumberOfMessagesVisible", "QueueName", aws_sqs_queue.orders_dlq.name],
           ]

@@ -93,12 +93,12 @@ resource "aws_api_gateway_stage" "orders_api" {
   access_log_settings {
     destination_arn = aws_cloudwatch_log_group.api_gateway_access_logs.arn
     format = jsonencode({
-      requestId      = "$context.requestId"
-      ip              = "$context.identity.sourceIp"
-      httpMethod      = "$context.httpMethod"
-      path            = "$context.path"
-      status          = "$context.status"
-      responseLength  = "$context.responseLength"
+      requestId        = "$context.requestId"
+      ip               = "$context.identity.sourceIp"
+      httpMethod       = "$context.httpMethod"
+      path             = "$context.path"
+      status           = "$context.status"
+      responseLength   = "$context.responseLength"
       integrationError = "$context.integration.error"
     })
   }

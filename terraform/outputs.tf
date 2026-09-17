@@ -1,6 +1,6 @@
 output "api_invoke_url" {
   description = "Base URL for the Order Management API"
-  value       = "${aws_api_gateway_stage.orders_api.invoke_url}"
+  value       = aws_api_gateway_stage.orders_api.invoke_url
 }
 
 output "orders_table_name" {

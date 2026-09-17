@@ -6,13 +6,9 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
-    archive = {
-      source  = "hashicorp/archive"
-      version = "~> 2.4"
-    }
   }
 
-  # Uncomment and configure for a real deployment (S3 + DynamoDB lock table).
+  # Uncomment and configure for a real deployment.
   # backend "s3" {
   #   bucket         = "my-terraform-state-bucket"
   #   key            = "order-platform/terraform.tfstate"
